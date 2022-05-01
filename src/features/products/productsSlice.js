@@ -56,7 +56,7 @@ export const productsSlice = createSlice({
 
 export const selectAllProducts = (state) => state.products.details;
 export const selectLoadingStatus = (state) => state.products.loading;
-export const selectProduct = (state, id) => state.allProducts.products.find(product => product.id === id);
+export const selectProduct = (state, id) => state.products.details[id];
 
 export const selectFilteredProducts = (state, ids) => {
   const arr = []

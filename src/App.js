@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getProducts } from './features/products/productsSlice'
 
 import ProductGrid from './features/products/ProductGrid'
-
+import Product from './features/products/Product';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ function App() {
     <Router>
       {/* <Navbar loggedIn={false} /> */}
       <Routes>
+        <Route path='/item/:id' element={ <Product /> } />
         <Route path='/' element={ <ProductGrid /> } />
         {/* <Route path='/products' element={<ProductsPage />} />
         <Route path='/basket' element={<BasketPage />} />

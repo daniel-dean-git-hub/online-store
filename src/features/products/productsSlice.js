@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchProducts, fetchCategories } from './productsApi'
 
 const initialState = {
+  details: {},
   loading: true,
   error: false,
 };
@@ -29,7 +30,7 @@ export const productsSlice = createSlice({
         state.error = false;
       })
       .addCase(getProducts.fulfilled, (state, action) => {
-        action.payload.forEach(item => state[item.id] = item)
+        action.payload.forEach(item => state.details[item.id] = item)
         state.loading = false;
         state.error = false;
       })
@@ -53,7 +54,8 @@ export const productsSlice = createSlice({
   }
 });
 
-export const selectAllProducts = (state) => state.products;
+export const selectAllProducts = (state) => state.products.details;
+export const selectLoadingStatus = (state) => state.products.loading;
 export const selectProduct = (state, id) => state.allProducts.products.find(product => product.id === id);
 
 export const selectFilteredProducts = (state, ids) => {

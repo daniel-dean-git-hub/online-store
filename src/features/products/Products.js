@@ -28,10 +28,9 @@ const Products = ({details}) => {
               <Card.Content>
               <Card.Header>{`${title}`}</Card.Header>
               <Card.Meta>{`$${price}`}</Card.Meta>
-              {/* <Card.Description>{description}</Card.Description> */}
               </Card.Content>
               <Card.Content extra textAlign={'center'}>
-                <Button as={Link} to={`../Products/${category}/${id}`}>Veiw Details</Button>
+                <Button as={Link} to={`../Products/${category}/${id}`}>View Details</Button>
                 <Button>Add to Cart</Button>
               </Card.Content>
             </Card>

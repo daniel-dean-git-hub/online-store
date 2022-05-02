@@ -3,9 +3,23 @@ import { Sticky, Header, Segment, Breadcrumb, Container } from 'semantic-ui-reac
 import './Header.scss'
 import { Link, useLocation } from 'react-router-dom'
 
+import { selectAllCategories } from '../products/productsSlice'
+import { useSelector } from 'react-redux'
+
 const Navbar = () => {
     const { pathname } = useLocation()
     const [links, setLinks] = useState([])
+
+
+    // const allCategories = useSelector(selectAllCategories)
+
+    // const test = allCategories ? allCategories.forEach(category => {
+    //     console.log(category.category)
+    // }) : ''
+
+    // console.log(allCategories)
+    // console.log(test)
+
 
     useEffect(() => {
         const pathItems = pathname.split('/').slice(1)
@@ -13,13 +27,13 @@ const Navbar = () => {
     }, [pathname])
 
     const breadcrumbs = links.map((link,index) => {
-        if (index === links.length-1) return <span key={index}><Breadcrumb.Section key={index}>{decodeURIComponent(link)}</Breadcrumb.Section></span>
+        if (index === links.length-1) return <span key={index}><Breadcrumb.Section className="breadcrumb-text">{decodeURIComponent(link)}</Breadcrumb.Section></span>
         
         const url = links.slice(0,index+1).join('/')
 
         return (
             <span key={index}>
-                <Breadcrumb.Section as={Link} to={url}>{decodeURIComponent(link)}</Breadcrumb.Section>
+                <Breadcrumb.Section as={Link} to={url} className="breadcrumb-text">{decodeURIComponent(link)}</Breadcrumb.Section>
                 <Breadcrumb.Divider />
             </span>
         )
@@ -34,7 +48,7 @@ const Navbar = () => {
                 <Container>
                     <Breadcrumb>
                         <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>
-                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider/>
                         {breadcrumbs}
                     </Breadcrumb>
                 </Container>

@@ -53,6 +53,6 @@ export const selectAllProductsFromCategory = (state, category) => Object.values(
 
 
 
-export const selectCategory = (state) => state.allProducts.category;
+export const selectAllCategories = (state) => Object.values(state.products.details)
 
 export default productsSlice.reducer;

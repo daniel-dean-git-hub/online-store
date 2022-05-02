@@ -7,7 +7,7 @@ import { getProducts } from './features/products/productsSlice'
 import { Container } from 'semantic-ui-react'
 
 import Header from './features/header/Header'
-import ProductGrid from './features/products/ProductGrid'
+import ProductPage from './features/products/ProductPage'
 import Product from './features/products/Product'
 import Home from './features/home/Home'
 import Category from './features/category/Category'
@@ -25,9 +25,9 @@ function App() {
       {/* <Navbar loggedIn={false} /> */}
       <Container>
         <Routes>
-          <Route path='/Products/:Item/:id' element={ <Product /> } />
-          <Route path='/Products/:Item' element={ <Category /> } />
-          <Route path='/Products' element={ <ProductGrid /> } />
+          <Route path='Products/:Item/:id' element={ <Product /> } />
+          <Route path='Products/:Item' element={ <Category /> } />
+          <Route path='Products' element={ <ProductPage /> } />
           <Route path='/' element={ <Home /> } />
           {/* <Route path='/products' element={<ProductsPage />} />
           <Route path='/basket' element={<BasketPage />} />

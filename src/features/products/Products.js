@@ -3,7 +3,7 @@ import { Card, Image, Placeholder, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const Products = ({details}) => {
-  //console.log(details)
+  console.log(details)
   const [loading, setLoading] = useState(true)
   const {id, title, image, price, category, rating} = details
   
@@ -25,13 +25,13 @@ const Products = ({details}) => {
                 to={`Item/${id}`}
               />
               <Card.Content>
-              <Card.Header>{`${title} - $${price}`}</Card.Header>
-              <Card.Meta>{category}</Card.Meta>
+              <Card.Header>{`${title}`}</Card.Header>
+              <Card.Meta>{`$${price}`}</Card.Meta>
               {/* <Card.Description>{description}</Card.Description> */}
               </Card.Content>
-              <Card.Content extra>
-                <Button as={Link} to={`${category}/${id}`}>Veiw Details</Button>
-                <Button>Add to Card</Button>
+              <Card.Content extra textAlign={'center'}>
+                <Button as={Link} to={`../Products/${category}/${id}`}>Veiw Details</Button>
+                <Button>Add to Cart</Button>
               </Card.Content>
             </Card>
           )

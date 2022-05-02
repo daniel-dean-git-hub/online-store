@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Sticky, Header, Segment, Breadcrumb, Container } from 'semantic-ui-react'
 import './Header.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-const index = () => {
+const Navbar = () => {
+    const { pathname } = useLocation()
+    const [links, setLinks] = useState([])
+
+    useEffect(() => {
+        const pathItems = pathname.split('/').slice(1)
+        setLinks(pathItems)
+    }, [pathname])
+
+    const breadcrumbs = links.map((link,index) => {
+        if (index === links.length-1) return <span key={index}><Breadcrumb.Section key={index}>{decodeURIComponent(link)}</Breadcrumb.Section></span>
+        
+        const url = links.slice(0,index+1).join('/')
+
+        return (
+            <span key={index}>
+                <Breadcrumb.Section as={Link} to={url}>{decodeURIComponent(link)}</Breadcrumb.Section>
+                <Breadcrumb.Divider />
+            </span>
+        )
+    })
+
   return (
     <Sticky active >
         <Segment inverted textAlign="center" basic attached>
@@ -14,6 +35,7 @@ const index = () => {
                 <Breadcrumb>
                     <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>
                     <Breadcrumb.Divider />
+                    {breadcrumbs}
                 </Breadcrumb>
             </Container>
         </Segment>
@@ -21,4 +43,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Navbar

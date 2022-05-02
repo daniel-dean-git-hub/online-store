@@ -22,7 +22,7 @@ const Products = ({details}) => {
                 centered 
                 size='small'
                 as={Link}
-                to={`/item/${id}`}
+                to={`Item/${id}`}
               />
               <Card.Content>
               <Card.Header>{`${title} - $${price}`}</Card.Header>
@@ -30,7 +30,7 @@ const Products = ({details}) => {
               {/* <Card.Description>{description}</Card.Description> */}
               </Card.Content>
               <Card.Content extra>
-                <Button as={Link} to={`/item/${id}`}>Veiw Details</Button>
+                <Button as={Link} to={`${category}/${id}`}>Veiw Details</Button>
                 <Button>Add to Card</Button>
               </Card.Content>
             </Card>
@@ -39,7 +39,6 @@ const Products = ({details}) => {
       else {
         return <></>
       }
-
     }
 
   return (

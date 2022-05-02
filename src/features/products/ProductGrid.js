@@ -39,7 +39,7 @@ const ProductGrid = () => {
     }
 
     return (
-        <Grid padded>
+        <Grid padded stretched>
             <Grid.Row>
                 <Card.Group centered>
                     {productLoading ? placeholders(20) : products}

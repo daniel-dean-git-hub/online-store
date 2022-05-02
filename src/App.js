@@ -6,6 +6,7 @@ import { getProducts } from './features/products/productsSlice'
 
 import ProductGrid from './features/products/ProductGrid'
 import Product from './features/products/Product';
+import Header from './features/header/Header'
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function App() {
 
   return (    
     <Router>
+      <Header style={{height: '100vh'}}/>
       {/* <Navbar loggedIn={false} /> */}
       <Routes>
         <Route path='/item/:id' element={ <Product /> } />

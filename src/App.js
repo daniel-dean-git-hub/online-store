@@ -22,18 +22,12 @@ function App() {
   return (    
     <Router>
       <Header style={{height: '100vh'}}/>
-      {/* <Navbar loggedIn={false} /> */}
       <Container>
         <Routes>
           <Route path='Products/:Item/:id' element={ <Product /> } />
           <Route path='Products/:Item' element={ <Category /> } />
           <Route path='Products' element={ <ProductPage /> } />
           <Route path='/' element={ <Home /> } />
-          {/* <Route path='/products' element={<ProductsPage />} />
-          <Route path='/basket' element={<BasketPage />} />
-          <Route path='/user' element={<UserAccountPage />} />
-          <Route path='/login' element={<UserLoginPage />} />
-          <Route path='/product/:id' element={<ProductPage />} /> */}
         </Routes>
       </Container>
     </Router>

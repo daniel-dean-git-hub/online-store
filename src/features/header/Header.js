@@ -25,24 +25,22 @@ const Navbar = () => {
         )
     })
 
-    console.log(links)
-
-  return (
-    <Sticky active >
-        <Segment inverted textAlign="center" basic attached>
-            <Header as='h1'>Online Store</Header>
-        </Segment>
-        { links[0] !== '' && <Segment textAlign="left" attached>
-            <Container>
-                <Breadcrumb>
-                    <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>
-                    <Breadcrumb.Divider />
-                    {breadcrumbs}
-                </Breadcrumb>
-            </Container>
-        </Segment> }
-    </Sticky>
-  )
+    return (
+        <Sticky active >
+            <Segment inverted textAlign="center" basic attached>
+                <Header as='h1'>Online Store</Header>
+            </Segment>
+            { links[0] !== '' && <Segment textAlign="left" attached>
+                <Container>
+                    <Breadcrumb>
+                        <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        {breadcrumbs}
+                    </Breadcrumb>
+                </Container>
+            </Segment> }
+        </Sticky>
+    )
 }
 
 export default Navbar

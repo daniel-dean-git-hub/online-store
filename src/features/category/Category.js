@@ -3,6 +3,9 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectAllProductsFromCategory } from '../products/productsSlice'
+
+import { Header, Segment, Container, Grid } from 'semantic-ui-react'
+
 import ProductGrid from '../products/ProductGrid'
 
 const Category = () => {
@@ -13,7 +16,12 @@ const Category = () => {
     const productList = useSelector((state) => selectAllProductsFromCategory(state,category))
 
     return (
-        <ProductGrid productList={productList}/>
+        <>
+            <Segment basic>
+                <Header as='h1' size='huge' dividing>{category}</Header>
+            </Segment>
+            <ProductGrid productList={productList}/>
+        </>
     )
 }
 

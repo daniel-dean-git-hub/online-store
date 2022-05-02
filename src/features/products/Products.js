@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Card, Image, Placeholder, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import './Products.scss'
 
 const Products = ({details}) => {
   const [loading, setLoading] = useState(true)
@@ -14,6 +15,7 @@ const Products = ({details}) => {
             <Card raised>
               {loading && <Placeholder><Placeholder.Image square /></Placeholder>}
               <Image 
+                className="products-img"
                 style={displayToggle} 
                 src={image} 
                 onLoad={() => setLoading(false)} 

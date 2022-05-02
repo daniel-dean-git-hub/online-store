@@ -25,12 +25,14 @@ const Navbar = () => {
         )
     })
 
+    console.log(links)
+
   return (
     <Sticky active >
         <Segment inverted textAlign="center" basic attached>
             <Header as='h1'>Online Store</Header>
         </Segment>
-        <Segment textAlign="left" attached>
+        { links[0] !== '' && <Segment textAlign="left" attached>
             <Container>
                 <Breadcrumb>
                     <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>
@@ -38,7 +40,7 @@ const Navbar = () => {
                     {breadcrumbs}
                 </Breadcrumb>
             </Container>
-        </Segment>
+        </Segment> }
     </Sticky>
   )
 }

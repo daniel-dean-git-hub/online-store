@@ -3,7 +3,6 @@ import { Card, Image, Placeholder, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const Products = ({details}) => {
-  console.log(details)
   const [loading, setLoading] = useState(true)
   const {id, title, image, price, category, rating} = details
   
@@ -22,7 +21,7 @@ const Products = ({details}) => {
                 centered 
                 size='small'
                 as={Link}
-                to={`Item/${id}`}
+                to={`../Products/${category}/${id}`}
               />
               <Card.Content>
               <Card.Header>{`${title}`}</Card.Header>

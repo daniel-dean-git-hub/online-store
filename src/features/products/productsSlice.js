@@ -51,7 +51,7 @@ export const selectFilteredProducts = (state, ids) => {
 
 export const selectAllProductsFromCategory = (state, category) => Object.values(state.products.details).filter(item => item.category === category)
 
-
+export const selectAllProductsFromSearch = (state, search) => Object.values(state.products.details).filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
 
 export const selectAllCategories = (state) => {
   const products = Object.values(state.products.details)

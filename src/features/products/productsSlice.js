@@ -53,6 +53,18 @@ export const selectAllProductsFromCategory = (state, category) => Object.values(
 
 
 
-export const selectAllCategories = (state) => Object.values(state.products.details)
+export const selectAllCategories = (state) => {
+  const products = Object.values(state.products.details)
+
+  const categories = []
+
+  for (const product of products) {
+    if (!categories.includes(product.category)) {
+      categories.push(product.category)
+    }
+  }
+
+  return categories
+}
 
 export default productsSlice.reducer;

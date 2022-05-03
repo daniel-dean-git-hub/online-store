@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container } from 'semantic-ui-react'
+import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown } from 'semantic-ui-react'
 import './Header.scss'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -10,15 +10,8 @@ const Navbar = () => {
     const { pathname } = useLocation()
     const [links, setLinks] = useState([])
 
-
-    // const allCategories = useSelector(selectAllCategories)
-
-    // const test = allCategories ? allCategories.forEach(category => {
-    //     console.log(category.category)
-    // }) : ''
-
-    // console.log(allCategories)
-    // console.log(test)
+    const allCategories = useSelector(selectAllCategories)
+    console.log(allCategories)
 
 
     useEffect(() => {
@@ -39,10 +32,26 @@ const Navbar = () => {
         )
     })
 
+    const dropdownMenu = () => {
+        const dropdownItems = allCategories.map((category, index) => <Dropdown.Item key={index} as={Link} to={`Products/${category}`} >{category}</Dropdown.Item>)
+
+        return (
+            <Menu compact>
+                <Dropdown text='Category' simple item >
+                    <Dropdown.Menu>
+                        {dropdownItems}
+                    </Dropdown.Menu>
+                </Dropdown>
+
+            </Menu>
+        ) 
+    }
+
     return (
         <Sticky active >
             <Segment inverted textAlign="center" basic attached>
                 <Header as='h1'>Online Store</Header>
+                {dropdownMenu()}
             </Segment>
             { links[0] !== '' && <Segment textAlign="left" attached>
                 <Container>

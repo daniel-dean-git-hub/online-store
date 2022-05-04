@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown, Search, Grid } from 'semantic-ui-react'
+import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown, Search, Item, Grid } from 'semantic-ui-react'
 import './Header.scss'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { selectAllCategories, selectAllProductsFromSearch } from '../products/productsSlice'
 import { useSelector } from 'react-redux'
@@ -10,16 +10,17 @@ const Navbar = () => {
     const { pathname } = useLocation()
     const [links, setLinks] = useState([])
     const [search, setSearch] = useState('')
-
+    const navigate = useNavigate()
     const allCategories = useSelector(selectAllCategories)
+    const searchResults = useSelector((state) => selectAllProductsFromSearch(state, search)) 
+
 
     useEffect(() => {
         const pathItems = pathname.split('/').slice(1)
         setLinks(pathItems)
     }, [pathname])
 
-    const searchResults = useSelector((state) => selectAllProductsFromSearch(state, search)) 
-    console.log(searchResults)
+    //console.log(searchResults)
 
     const breadcrumbs = links.map((link,index) => {
         if (index === links.length-1) return <span key={index}><Breadcrumb.Section className="breadcrumb-text">{decodeURIComponent(link)}</Breadcrumb.Section></span>
@@ -49,15 +50,17 @@ const Navbar = () => {
     }
 
     const resultRenderer = (product) => {
-        console.log(product)
+        const {title, price, image} = product
 
-        const {id, title, category} = product
-
-
-        //console.log(title) ;
-
-
-        return <Header as={Link} to={`products/${category}/${id+1}`} content={title} /> 
+        return (
+            <Item>
+                <Item.Image size='tiny' src={image} />
+                <Item.Content verticalAlign='middle'>
+                    <Item.Header>{title}</Item.Header>
+                    <Item.Meta>${price}</Item.Meta>
+                </Item.Content>
+            </Item>
+        ) 
     }
 
     return (
@@ -69,12 +72,17 @@ const Navbar = () => {
                     <Search
                         aligned={'center'}
                         placeholder='Search...'
-                        onSearchChange={(e) => {
-                            setSearch(e.target.value)
-                        }}
+                        onSearchChange={(e) => setSearch(e.target.value)}
                         resultRenderer={resultRenderer}
-                        results={searchResults}
-                        // value={value}
+                        results={searchResults.slice(0, 10)}
+                        onResultSelect={(event, data) => {
+                            if (data) {
+                                const { result } = data
+                                navigate(`products/${result.category}/${result.productId}`)
+                            }
+                            setSearch('')
+                        }}
+                        value={search}
                     />
                 </Grid>
 

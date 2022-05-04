@@ -5,7 +5,7 @@ import './Products.scss'
 
 const Products = ({details}) => {
   const [loading, setLoading] = useState(true)
-  const {id, title, image, price, category, rating} = details
+  const {productId, title, image, price, category, rating} = details
   
   const displayToggle = loading ? {display: 'none'} : { display: ''}
 
@@ -23,14 +23,14 @@ const Products = ({details}) => {
                 centered 
                 size='small'
                 as={Link}
-                to={`../Products/${category}/${id}`}
+                to={`../Products/${category}/${productId}`}
               />
               <Card.Content>
               <Card.Header>{`${title}`}</Card.Header>
               <Card.Meta>{`$${price}`}</Card.Meta>
               </Card.Content>
               <Card.Content extra textAlign={'center'}>
-                <Button as={Link} to={`../Products/${category}/${id}`}>View Details</Button>
+                <Button as={Link} to={`../Products/${category}/${productId}`}>View Details</Button>
                 <Button>Add to Cart</Button>
               </Card.Content>
             </Card>

@@ -10,7 +10,7 @@ const ProductGrid = ({ productList }) => {
     const productLoading = useSelector(selectLoadingStatus)
 
     const products = Object.values(productList).map(product => {
-        return product.id ? <Products key={product.id} details={product} /> : <></>
+        return product.productId ? <Products key={product.productId} details={product} /> : <></>
     })
 
     const placeholders = (number = 10) => {

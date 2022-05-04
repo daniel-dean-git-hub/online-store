@@ -25,7 +25,22 @@ export const productsSlice = createSlice({
         state.error = false;
       })
       .addCase(getProducts.fulfilled, (state, action) => {
-        action.payload.forEach(item => state.details[item.id] = item)
+        action.payload.forEach(item => {
+          console.log(item)
+        
+          state.details[item.id] = {
+            productId: item.id,
+            category: item.category,
+            description: item.description,
+            image: item.image,
+            price: item.price,
+            rating: {
+              rate: item.rating.rate,
+              count: item.rating.count
+            },
+            title: item.title
+          }
+        })
         state.loading = false;
         state.error = false;
       })
@@ -39,6 +54,8 @@ export const productsSlice = createSlice({
 export const selectAllProducts = (state) => state.products.details;
 export const selectLoadingStatus = (state) => state.products.loading;
 export const selectProduct = (state, id) => state.products.details[id];
+export const selectProductByName = (state, name) => Object.values(state.products.details).filter(item => item.name === name)
+
 
 export const selectFilteredProducts = (state, ids) => {
   const arr = []

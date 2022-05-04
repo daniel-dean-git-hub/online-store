@@ -8,7 +8,7 @@ const Product = () => {
     const { id } = useParams();
     const details = useSelector(state => selectProduct(state, parseInt(id)))
     
-    console.log(details)
+    //console.log(details)
 
     if (!details) return <></>
     

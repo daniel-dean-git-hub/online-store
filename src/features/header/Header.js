@@ -48,9 +48,16 @@ const Navbar = () => {
         ) 
     }
 
-    const resultRenderer = ({id, title, category}) => {
-        console.log(title) ;
-        return <Header as={Link} to={`products/${category}/${id}`} content={title} /> 
+    const resultRenderer = (product) => {
+        console.log(product)
+
+        const {id, title, category} = product
+
+
+        //console.log(title) ;
+
+
+        return <Header as={Link} to={`products/${category}/${id+1}`} content={title} /> 
     }
 
     return (

@@ -7,8 +7,16 @@ import { Segment, Container, Grid, Image, Header, Button, Icon, Rating, Divider,
 const Product = () => {
     const { id } = useParams();
     const details = useSelector(state => selectProduct(state, parseInt(id)))
+    
+    console.log(details)
+
+    if (!details) return <></>
+    
     const { title, price, description, image, rating} = details
     const {rate, count} = rating;
+
+    
+
     return (
         <Segment padded='very' basic>
             <Grid columns={2} padded stackable stretched >

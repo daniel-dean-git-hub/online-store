@@ -74,7 +74,7 @@ const Navbar = () => {
                         placeholder='Search...'
                         onSearchChange={(e) => setSearch(e.target.value)}
                         resultRenderer={resultRenderer}
-                        results={searchResults.slice(0, 10)}
+                        results={searchResults}
                         onResultSelect={(event, data) => {
                             if (data) {
                                 const { result } = data
@@ -83,7 +83,10 @@ const Navbar = () => {
                             setSearch('')
                         }}
                         value={search}
-                    />
+                        
+                    >
+                        <Search.Result className="search-results"></Search.Result>
+                    </Search>
                 </Grid>
 
             </Segment>

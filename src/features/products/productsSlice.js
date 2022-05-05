@@ -26,7 +26,7 @@ export const productsSlice = createSlice({
       })
       .addCase(getProducts.fulfilled, (state, action) => {
         action.payload.forEach(item => {
-          console.log(item)
+          //console.log(item)
         
           state.details[item.id] = {
             productId: item.id,

@@ -26,7 +26,7 @@ const Home = () => {
           <CategoryButton categoryImg={mens} url={`/Products/men's%20clothing`} text={`Men's`} />
         </Grid.Column>
       </Grid.Row>
-      <Grid.Row centered  textAlign={'center'}>
+      <Grid.Row>
         <Grid.Column width={8} color={'black'}>
           <CategoryButton categoryImg={jewelery} url={`/Products/jewelery`} text={`Jewelery`} />
         </Grid.Column>

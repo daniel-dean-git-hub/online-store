@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown, Search, Item, Grid } from 'semantic-ui-react'
+import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown, Item } from 'semantic-ui-react'
 import './Header.scss'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { selectAllCategories, selectAllProductsFromSearch } from '../products/productsSlice'
 import { useSelector } from 'react-redux'
+import Searchbar from './searchbar/Searchbar'
 
 const Navbar = () => {
+    const navigate = useNavigate()
     const { pathname } = useLocation()
     const [links, setLinks] = useState([])
     const [search, setSearch] = useState('')
-    const navigate = useNavigate()
     const allCategories = useSelector(selectAllCategories)
     const searchResults = useSelector((state) => selectAllProductsFromSearch(state, search)) 
 
@@ -63,32 +64,27 @@ const Navbar = () => {
         ) 
     }
 
+
+    const onResultSelect = (event, data) => {
+        if (data) {
+            const { result } = data
+            navigate(`products/${result.category}/${result.productId}`)
+        }
+        setSearch('')
+    }
+
     return (
         <Sticky active >
             <Segment inverted textAlign="center" basic attached>
                 <Header as='h1'>Online Store</Header>
                 {dropdownMenu()}
-                <Grid centered>
-                    <Search
-                        aligned={'center'}
-                        placeholder='Search...'
-                        onSearchChange={(e) => setSearch(e.target.value)}
-                        resultRenderer={resultRenderer}
-                        results={searchResults}
-                        onResultSelect={(event, data) => {
-                            if (data) {
-                                const { result } = data
-                                navigate(`products/${result.category}/${result.productId}`)
-                            }
-                            setSearch('')
-                        }}
-                        value={search}
-                        
-                    >
-                        <Search.Result className="search-results"></Search.Result>
-                    </Search>
-                </Grid>
-
+                <Searchbar 
+                    search={search} 
+                    searchResults={searchResults} 
+                    resultRenderer={resultRenderer} 
+                    setSearch={setSearch} 
+                    onResultSelect={onResultSelect}
+                />
             </Segment>
             { links[0] !== '' && <Segment textAlign="left" attached>
                 <Container>

@@ -13,6 +13,8 @@ const Navbar = () => {
     const { pathname } = useLocation()
     const [links, setLinks] = useState([])
     const [search, setSearch] = useState('')
+    const [width, setWidth] = useState(window.innerWidth)
+    
     const allCategories = useSelector(selectAllCategories)
     const searchResults = useSelector((state) => selectAllProductsFromSearch(state, search)) 
 
@@ -60,6 +62,12 @@ const Navbar = () => {
         setSearch('')
     }
 
+    useEffect(() => {
+        const resize = () => { setWidth(window.innerWidth) }
+        window.addEventListener('resize', resize )
+        return () => window.removeEventListener('resize', resize)
+    })
+
     return (
         <Sticky active >
             <Segment inverted textAlign="center" basic attached>
@@ -77,13 +85,12 @@ const Navbar = () => {
                             onResultSelect={onResultSelect}
                         />
                     </Grid.Column>
-                    {/* <Grid.Column only='large screen'> */}
-                    <Grid.Column>
+                    <Grid.Column only='large screen'>
                         <DropdownMenu categories={allCategories} />
                     </Grid.Column>
                 </Grid>
             </Segment>
-            { links[0] !== '' && <Segment textAlign="left" attached>
+            { links[0] !== '' && width >= 1200 && <Segment textAlign="left" attached>
                 <Container>
                     <Breadcrumb>
                         <Breadcrumb.Section as={Link} to={'/'}>Home</Breadcrumb.Section>

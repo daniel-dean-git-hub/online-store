@@ -1,0 +1,12 @@
+.ui.black.button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui.black.button:hover, .ui.black.buttons .button:hover {
+    text-shadow: none;
+    background: #fff !important;
+    color: rgba(0,0,0,.8) !important;
+}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Grid } from 'semantic-ui-react'
@@ -15,7 +15,7 @@ import electronics from '../../assets/electronics.jpg'
 const Home = () => {
   return (
     <Grid stretched centered>
-      <Grid.Row as={Link} to={`/Products`}>
+      <Grid.Row as={Link} to={`/Products`} color={'black'}>
         <Banner bannerImg={bannerImg} />
       </Grid.Row>
       <Grid.Row>

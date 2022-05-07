@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container, Menu, Dropdown, Item } from 'semantic-ui-react'
+import { Sticky, Header, Segment, Breadcrumb, Container, Item, Grid } from 'semantic-ui-react'
 import './Header.scss'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { selectAllCategories, selectAllProductsFromSearch } from '../products/productsSlice'
 import { useSelector } from 'react-redux'
 import Searchbar from './searchbar/Searchbar'
+import DropdownMenu from './dropdownMenu/DropdownMenu'
 
 const Navbar = () => {
     const navigate = useNavigate()
@@ -21,8 +22,6 @@ const Navbar = () => {
         setLinks(pathItems)
     }, [pathname])
 
-    //console.log(searchResults)
-
     const breadcrumbs = links.map((link,index) => {
         if (index === links.length-1) return <span key={index}><Breadcrumb.Section className="breadcrumb-text">{decodeURIComponent(link)}</Breadcrumb.Section></span>
         
@@ -36,21 +35,9 @@ const Navbar = () => {
         )
     })
 
-    const dropdownMenu = () => {
-        const dropdownItems = allCategories.map((category, index) => <Dropdown.Item key={index} as={Link} to={`Products/${category}`} >{category}</Dropdown.Item>)
-
-        return (
-            <Menu compact>
-                <Dropdown text='Category' simple item >
-                    <Dropdown.Menu>
-                        {dropdownItems}
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Menu>
-        ) 
-    }
-
     const resultRenderer = (product) => {
+        if (!product) return
+
         const {title, price, image} = product
 
         return (
@@ -68,7 +55,7 @@ const Navbar = () => {
     const onResultSelect = (event, data) => {
         if (data) {
             const { result } = data
-            navigate(`products/${result.category}/${result.productId}`)
+            navigate(`products/${result.category}/${result.id}`)
         }
         setSearch('')
     }
@@ -76,15 +63,25 @@ const Navbar = () => {
     return (
         <Sticky active >
             <Segment inverted textAlign="center" basic attached>
-                <Header as='h1'>Online Store</Header>
-                {dropdownMenu()}
-                <Searchbar 
-                    search={search} 
-                    searchResults={searchResults} 
-                    resultRenderer={resultRenderer} 
-                    setSearch={setSearch} 
-                    onResultSelect={onResultSelect}
-                />
+                <Grid padded columns={3} divided stackable>
+                    <Grid.Column>
+                        <Header as={Link} to={'/'} inverted size='huge'>Online Store</Header>
+                    </Grid.Column>
+                   
+                    <Grid.Column>
+                        <Searchbar 
+                            search={search} 
+                            searchResults={searchResults} 
+                            resultRenderer={resultRenderer} 
+                            setSearch={setSearch} 
+                            onResultSelect={onResultSelect}
+                        />
+                    </Grid.Column>
+                    {/* <Grid.Column only='large screen'> */}
+                    <Grid.Column>
+                        <DropdownMenu categories={allCategories} />
+                    </Grid.Column>
+                </Grid>
             </Segment>
             { links[0] !== '' && <Segment textAlign="left" attached>
                 <Container>

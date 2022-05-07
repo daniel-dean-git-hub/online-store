@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
 import { Image, Button, Placeholder } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import './Buttons.scss'
 
-const CategoryButton = ({categoryImg, url, text}) => {
+const CategoryButton = ({categoryImg, url, text}) => {  
     const [loaded, setLoaded] = useState(false)
-
-    const buttonStyle = {
-        position: 'absolute',
-        bottom: '1rem',
-        transform: 'translate(-50%, -50%)',
-        left: '50%'
-    }
 
     return (
     <>
@@ -28,13 +22,11 @@ const CategoryButton = ({categoryImg, url, text}) => {
         { 
             loaded && 
             <Button 
-                style={buttonStyle} 
                 as={Link} 
                 to={url} 
-                circular 
-                black 
-                inverted 
+                circular
                 size={'huge'} 
+                color={'black'}
             >
                 {text}
             </Button> 

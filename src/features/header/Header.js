@@ -73,7 +73,7 @@ const Navbar = () => {
             <Segment inverted textAlign="center" basic attached>
                 <Grid padded columns={3} divided stackable>
                     <Grid.Column>
-                        <Header as={Link} to={'/'} inverted size='huge'>Online Store</Header>
+                        <Header as={Link} to={'/'} inverted size='huge'>Boutique En Ligne Chic</Header>
                     </Grid.Column>
                    
                     <Grid.Column>

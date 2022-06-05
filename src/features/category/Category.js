@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectAllProductsFromCategory } from '../products/productsSlice'
 
-import { Header, Segment, Container, Grid } from 'semantic-ui-react'
+import { Header, Segment } from 'semantic-ui-react'
 
 import ProductGrid from '../products/ProductGrid'
 

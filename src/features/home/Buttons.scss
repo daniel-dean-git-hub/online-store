@@ -10,3 +10,30 @@
     background: #fff !important;
     color: rgba(0,0,0,.8) !important;
 }
+
+.homepage-images {
+    isolation: isolate;
+    position: relative;
+}
+
+.homepage-images::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0.3;
+} 
+
+.ui.grid>.column:not(.row), .ui.grid>.row>.column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.ui.grid {
+    margin: 0 !important;
+    
+    .row {
+        padding-top:  0 !important;
+        padding-bottom:  0 !important;
+    }
+}

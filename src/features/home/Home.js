@@ -15,22 +15,22 @@ import electronics from '../../assets/electronics.jpg'
 const Home = () => {
   return (
     <Grid stretched centered>
-      <Grid.Row as={Link} to={`/Products`} color={'black'}>
+      <Grid.Row>
         <Banner bannerImg={bannerImg} />
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column width={8} color={'black'}>
+        <Grid.Column width={8}>
           <CategoryButton categoryImg={womens} url={`/Products/women's%20clothing`} text={`Women's`} />
         </Grid.Column>
-        <Grid.Column width={8} color={'black'}>
+        <Grid.Column width={8}>
           <CategoryButton categoryImg={mens} url={`/Products/men's%20clothing`} text={`Men's`} />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column width={8} color={'black'}>
+        <Grid.Column width={8}>
           <CategoryButton categoryImg={jewelery} url={`/Products/jewelery`} text={`Jewelery`} />
         </Grid.Column>
-        <Grid.Column width={8} color={'black'}>
+        <Grid.Column width={8}>
           <CategoryButton categoryImg={electronics} url={`/Products/electronics`} text={`Electronics`}/>
         </Grid.Column>
       </Grid.Row>

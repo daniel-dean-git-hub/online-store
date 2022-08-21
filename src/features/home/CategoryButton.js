@@ -16,6 +16,7 @@ const CategoryButton = ({categoryImg, url, text}) => {
         }
         <Image 
           src={categoryImg} 
+          className='homepage-images'
           style={loaded ? {visibility: 'visible', display: 'block'} : {visibility: 'hidden', display: 'none'}} 
           wrapped onLoad={() => setLoaded(true)} 
         /> 

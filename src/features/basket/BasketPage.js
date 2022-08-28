@@ -9,11 +9,10 @@ const BasketPage = () => {
   const basketIds = Object.keys(basketItems)
   const productDetails = useSelector(state => selectFilteredProducts(state, basketIds))
 
-  
+  if (!productDetails.length > 0) return <></>
 
   return (
     <>
-      <div>BasketPage</div>
       <div>{
         productDetails.map((product, key) => <BasketItem key={key} details={product} /> )
       }</div>

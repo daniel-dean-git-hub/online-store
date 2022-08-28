@@ -2,51 +2,51 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: {
-    '4': {
-      quantity: 1,
-      price: 15.99,
-      total: 15.99
-    },
-    '5': {
-      quantity: 1,
-      price: 695,
-      total: 695
-    },
-    '6': {
-      quantity: 2,
-      price: 168,
-      total: 336
-    },
-    '7': {
-      quantity: 3,
-      price: 9.99,
-      total: 29.97
-    },
-    '8': {
-      quantity: 2,
-      price: 10.99,
-      total: 21.98
-    },
-    '13': {
-      quantity: 1,
-      price: 599,
-      total: 599
-    },
-    '15': {
-      quantity: 1,
-      price: 56.99,
-      total: 56.99
-    },
-    '16': {
-      quantity: 2,
-      price: 29.95,
-      total: 59.9
-    },
-    '18': {
-      quantity: 2,
-      price: 9.85,
-      total: 19.7
-    }
+    // '4': {
+    //   quantity: 1,
+    //   price: 15.99,
+    //   total: 15.99
+    // },
+    // '5': {
+    //   quantity: 1,
+    //   price: 695,
+    //   total: 695
+    // },
+    // '6': {
+    //   quantity: 2,
+    //   price: 168,
+    //   total: 336
+    // },
+    // '7': {
+    //   quantity: 3,
+    //   price: 9.99,
+    //   total: 29.97
+    // },
+    // '8': {
+    //   quantity: 2,
+    //   price: 10.99,
+    //   total: 21.98
+    // },
+    // '13': {
+    //   quantity: 1,
+    //   price: 599,
+    //   total: 599
+    // },
+    // '15': {
+    //   quantity: 1,
+    //   price: 56.99,
+    //   total: 56.99
+    // },
+    // '16': {
+    //   quantity: 2,
+    //   price: 29.95,
+    //   total: 59.9
+    // },
+    // '18': {
+    //   quantity: 2,
+    //   price: 9.85,
+    //   total: 19.7
+    // }
   }
 };
 

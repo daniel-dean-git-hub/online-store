@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container, Item, Grid } from 'semantic-ui-react'
+import { Sticky, Header, Segment, Breadcrumb, Container, Item, Grid, Button, Icon } from 'semantic-ui-react'
 import './Header.scss'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
@@ -71,12 +71,12 @@ const Navbar = () => {
     return (
         <Sticky active >
             <Segment inverted textAlign="center" basic attached>
-                <Grid padded columns={3} divided stackable>
-                    <Grid.Column>
+                <Grid padded stackable columns='equal'>
+                    <Grid.Column width={4}>
                         <Header as={Link} to={'/'} inverted size='huge'>Boutique En Ligne Chic</Header>
                     </Grid.Column>
                    
-                    <Grid.Column>
+                    <Grid.Column >
                         <Searchbar 
                             search={search} 
                             searchResults={searchResults} 
@@ -85,8 +85,15 @@ const Navbar = () => {
                             onResultSelect={onResultSelect}
                         />
                     </Grid.Column>
-                    <Grid.Column only='large screen'>
+
+                    <Grid.Column only='large screen' width={3}>
                         <DropdownMenu categories={allCategories} />
+                    </Grid.Column>
+
+                    <Grid.Column width={1}>
+                        <Button className="basket-btn"onClick={() => navigate('/Basket')}>
+                            <Icon name='cart' />
+                        </Button>
                     </Grid.Column>
                 </Grid>
             </Segment>

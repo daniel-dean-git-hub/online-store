@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { Header, Segment, Grid, Card, Container } from 'semantic-ui-react'
+import { Header, Segment, Grid, Card, Container, Icon } from 'semantic-ui-react'
 import { selectFilteredProducts } from '../products/productsSlice'
 import { selectAllBasketItems, selectBasketTotal } from './basketSlice'
 import BasketItem from './BasketItem'
@@ -24,7 +24,9 @@ const BasketPage = () => {
     return (
       <>
         <Segment basic>
-          <Header as='h1' size='huge' dividing>Basket</Header>
+          <Header as='h1' size='huge' dividing>
+            <Icon name='shopping basket' /> Basket
+          </Header>
         </Segment>
         <Grid padded stackable columns='equal'>
           <Grid.Column >
@@ -36,8 +38,6 @@ const BasketPage = () => {
       </>
     )
   }
-
-
 
   return (
     <>

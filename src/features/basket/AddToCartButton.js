@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, increaseItemQuantity, selectBasketItem } from '../basket/basketSlice'
 import { selectProduct } from '../products/productsSlice';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 const AddToCartButton = ({id, fluid = false}) => {
     const dispatch = useDispatch();
-    const [cartBtnMessage, setCartBtnMessage] = useState('Add to cart')
+    const [cartBtnMessage, setCartBtnMessage] = useState('Add Item')
     const details = useSelector(state => selectProduct(state, parseInt(id)))
     const { price} = details
     const basketItem = useSelector(state => selectBasketItem(state, id))
@@ -17,11 +17,11 @@ const AddToCartButton = ({id, fluid = false}) => {
             : dispatch(addItem({id: id, quantity: 1, price: price}))
 
         fluid 
-            ? setCartBtnMessage('Added to cart ✔')
+            ? setCartBtnMessage('Added to Basket ✔')
             : setCartBtnMessage('Added ✔')
 
         setTimeout(() => { 
-            setCartBtnMessage('Add to cart')
+            setCartBtnMessage('Add Item')
         }, 1500)
     }
     
@@ -35,7 +35,9 @@ const AddToCartButton = ({id, fluid = false}) => {
 
     return (
         <Button fluid={fluid} onClick={addOrUpatedBasketItem}>
-            <Button.Content>{cartBtnMessage}</Button.Content>
+            <Button.Content>
+                <Icon name='shopping basket' />{cartBtnMessage}
+            </Button.Content>
         </Button>  
     )
 }

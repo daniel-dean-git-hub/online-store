@@ -20,10 +20,15 @@ const Products = ({details}) => {
 
   const displayToggle = loading ? {display: 'none'} : { display: ''}
 
-  const quantityUpdate = (total) => {
-    if (isNaN(total)) total = 0
-    if (total > 100) total = 100
-    dispatch(updateItemQuantityByAmount({ id: productId, quantity: total}))
+  const quantityUpdate = (value) => {
+    if (isNaN(value)) value = 0
+    if (value > 100) value = 100
+    dispatch(updateItemQuantityByAmount({ id: productId, quantity: value}))
+  }
+
+  const deleteIfEmpty = (value) => {
+    console.log(value)
+    if (value === 0) dispatch(deleteItem({id: productId}))
   }
 
   const product = () => {
@@ -50,22 +55,22 @@ const Products = ({details}) => {
                 <Button as={Link} to={`../Products/${category}/${productId}`}>View Details</Button>
                 <Button onClick={() => dispatch(deleteItem({id: productId}))}>Remove Item</Button>
                 {
-                  quantity <= 0 
+                  quantity <= 1
                     ? <Button onClick={() => dispatch(decreaseItemQuantity({id: productId}))} disabled>
-                        <Icon name='cart arrow down' />
+                        <Icon name='shopping basket' /> -
                       </Button>
                     : <Button onClick={() => dispatch(decreaseItemQuantity({id: productId}))}>
-                        <Icon name='cart arrow down' />
+                        <Icon name='shopping basket' /> -
                       </Button>
                 }
-                <input className='total' value={quantity} onChange={(e) => quantityUpdate(parseInt(e.target.value))}/>
+                <input className='total' value={quantity} onChange={(e) => quantityUpdate(parseInt(e.target.value))} onBlur={(e) => deleteIfEmpty(parseInt(e.target.value))}/>
                 {
                   quantity >= 100 
                     ? <Button onClick={() => dispatch(increaseItemQuantity({id: productId}))} disabled>
-                        <Icon name='cart plus' />
+                        <Icon name='shopping basket' /> +
                       </Button>
                     : <Button onClick={() => dispatch(increaseItemQuantity({id: productId}))}>
-                        <Icon name='cart plus' />
+                        <Icon name='shopping basket' /> +
                       </Button>
                 }
                 <div>Total: ${total.toFixed(2)}</div>

@@ -1,9 +1,12 @@
 .total {
     max-width: 60px;
-    margin-right: 3px;
     height: 36px;
     border: 1px solid #e0e1e2;
     border-radius: 0.28571429rem;
     color: rgba(0,0,0,.6);
     text-align: center;
+}
+
+.ui.button {
+    margin: 3px !important;
 }

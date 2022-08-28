@@ -92,7 +92,7 @@ const Navbar = () => {
 
                     <Grid.Column width={2}>
                         <Button className="basket-btn"onClick={() => navigate('/Basket')}>
-                            <Icon name='cart' /> {basketItems}
+                            <Icon name='shopping basket' /> {basketItems}
                         </Button>
                     </Grid.Column>
                 </Grid>

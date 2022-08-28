@@ -68,12 +68,12 @@ export const basketSlice = createSlice({
     },
     updateItemQuantityByAmount: (state, {payload}) => {
       const { id, quantity } = payload
-      state.items[id].quantity += quantity
+      state.items[id].quantity = quantity
       state.items[id].total = state.items[id].quantity * state.items[id].price
     },
     increaseItemQuantity: (state, {payload}) => {
       const { id } = payload
-      state.items[id].quantity += 1
+      if (state.items[id].quantity < 100) state.items[id].quantity += 1
       state.items[id].total = state.items[id].quantity * state.items[id].price
     },
     decreaseItemQuantity: (state, {payload}) => {

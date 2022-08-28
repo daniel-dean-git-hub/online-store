@@ -1,13 +1,26 @@
 import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Card, Image, Placeholder, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { addItem, increaseItemQuantity, selectBasketItem } from '../basket/basketSlice'
 import './Products.scss'
 
 const Products = ({details}) => {
-  const [loading, setLoading] = useState(true)
   const {productId, title, image, price, category, rating} = details
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch();
+
   
+
+  const basketItem = useSelector(state => selectBasketItem(state, productId))
   const displayToggle = loading ? {display: 'none'} : { display: ''}
+  
+  
+  const addOrUpatedBasketItem = () => {
+    basketItem
+      ? dispatch(increaseItemQuantity({id: productId}))
+      : dispatch(addItem({id: productId, quantity: 1}))
+  }
 
   const product = () => {
       if (rating) {
@@ -31,7 +44,7 @@ const Products = ({details}) => {
               </Card.Content>
               <Card.Content extra textAlign={'center'}>
                 <Button as={Link} to={`../Products/${category}/${productId}`}>View Details</Button>
-                <Button>Add to Cart</Button>
+                <Button onClick={addOrUpatedBasketItem}>Add to Cart</Button>
               </Card.Content>
             </Card>
           )

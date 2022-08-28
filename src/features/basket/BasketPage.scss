@@ -1,0 +1,23 @@
+.sticky-total {
+    position: sticky !important;
+    top: 247px !important;
+    z-index: 100;
+}
+
+@media screen and (min-width: 360px) {
+    .sticky-total { 
+        top: 211px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .sticky-total { 
+        top: 117px !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .sticky-total { 
+        top: 200px !important;
+    }
+}

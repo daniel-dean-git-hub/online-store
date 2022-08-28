@@ -1,4 +1,5 @@
 import React from 'react'
+import './Category.scss'
 
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -18,7 +19,7 @@ const Category = () => {
     return (
         <>
             <Segment basic>
-                <Header as='h1' size='huge' dividing>{category}</Header>
+                <Header as='h1' size='huge' dividing className="uppercase">{category}</Header>
             </Segment>
             <ProductGrid productList={productList}/>
         </>

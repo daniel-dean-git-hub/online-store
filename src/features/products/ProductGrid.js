@@ -2,11 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectLoadingStatus } from './productsSlice'
 import { Grid, Card, Placeholder } from 'semantic-ui-react'
-
 import Products from './Products'
 
 const ProductGrid = ({ productList }) => {
-
     const productLoading = useSelector(selectLoadingStatus)
 
     const products = Object.values(productList).map(product => {

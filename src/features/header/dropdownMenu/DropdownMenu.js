@@ -9,14 +9,14 @@ const DropdownMenu = ({categories}) => {
     const navigateToCategory = (event, data) => navigate(`Products/${data.value}`)
 
     return (
-
-            <Dropdown 
-                placeholder='Categories'
-                button
-                selection
-                options={dropdownItems}   
-                onChange={navigateToCategory}         
-            />
+        <Dropdown 
+            placeholder='Categories'
+            button
+            selection
+            options={dropdownItems}   
+            onChange={navigateToCategory}  
+            className="uppercase"       
+        />
     )
 }
 

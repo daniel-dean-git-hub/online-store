@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Sticky, Header, Segment, Breadcrumb, Container, Item, Grid, Button, Icon } from 'semantic-ui-react'
-import './Header.scss'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-
-import { selectAllCategories, selectAllProductsFromSearch } from '../products/productsSlice'
 import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Sticky, Header, Segment, Breadcrumb, Container, Item, Grid, Button, Icon } from 'semantic-ui-react'
+import { selectAllCategories, selectAllProductsFromSearch } from '../products/productsSlice'
+import { selectAllItemQuantity } from '../basket/basketSlice'
 import Searchbar from './searchbar/Searchbar'
 import DropdownMenu from './dropdownMenu/DropdownMenu'
+import './Header.scss'
 
 const Navbar = () => {
     const navigate = useNavigate()
@@ -17,7 +17,7 @@ const Navbar = () => {
     
     const allCategories = useSelector(selectAllCategories)
     const searchResults = useSelector((state) => selectAllProductsFromSearch(state, search)) 
-
+    const basketItems = useSelector(selectAllItemQuantity)
 
     useEffect(() => {
         const pathItems = pathname.split('/').slice(1)
@@ -90,9 +90,9 @@ const Navbar = () => {
                         <DropdownMenu categories={allCategories} />
                     </Grid.Column>
 
-                    <Grid.Column width={1}>
+                    <Grid.Column width={2}>
                         <Button className="basket-btn"onClick={() => navigate('/Basket')}>
-                            <Icon name='cart' />
+                            <Icon name='cart' /> {basketItems}
                         </Button>
                     </Grid.Column>
                 </Grid>

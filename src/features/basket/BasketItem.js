@@ -29,7 +29,7 @@ const Products = ({details}) => {
   const product = () => {
       if (rating) {
           return ( 
-            <Card raised>
+            <Card raised centered={true}>
               {loading && <Placeholder><Placeholder.Image square /></Placeholder>}
               <Image 
                 className="products-img"

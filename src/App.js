@@ -8,6 +8,7 @@ import { Container } from 'semantic-ui-react'
 
 import Header from './features/header/Header'
 import ProductPage from './features/products/ProductPage'
+import BasketPage from './features/basket/BasketPage'
 import Product from './features/products/Product'
 import Home from './features/home/Home'
 import Category from './features/category/Category'
@@ -27,6 +28,7 @@ function App() {
           <Route path='Products/:Item/:id' element={ <Product /> } />
           <Route path='Products/:Item' element={ <Category /> } />
           <Route path='Products' element={ <ProductPage /> } />
+          <Route path='Basket' element={ <BasketPage /> } />
           <Route path='/' element={ <Home /> } />
         </Routes>
       </Container>

@@ -59,9 +59,7 @@ export const selectProductByName = (state, name) => Object.values(state.products
 
 export const selectFilteredProducts = (state, ids) => {
   const arr = []
-  ids.forEach(id => {
-    arr.push(state.allProducts.products.find(product => product.id === id))
-  })
+  ids.forEach(id => arr.push(state.products.details[id]))
   return arr
 }
 

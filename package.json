@@ -1,6 +1,6 @@
 {
   "name": "online-store",
-  "homepage": "https://dandean191.github.io/online-store/",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
